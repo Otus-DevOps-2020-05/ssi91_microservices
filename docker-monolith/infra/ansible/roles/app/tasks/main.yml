@@ -1,6 +1,6 @@
 ---
 - name: Install docker
-  shell: curl -fsSL get.docker.com | sh
+  shell: sleep 30 && curl -fsSL get.docker.com | sh
 
 - name: Install pip
   become: true

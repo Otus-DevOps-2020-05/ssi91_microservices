@@ -1,3 +1,4 @@
+---
 - name: Install dependencies
   hosts: default
   roles:
