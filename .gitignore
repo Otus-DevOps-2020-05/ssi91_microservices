@@ -1,5 +1,5 @@
 key.json
-/packer/variables.json
+/docker-monolith/infra/packer/variables.json
 
 # terraform
 *.tfstate
