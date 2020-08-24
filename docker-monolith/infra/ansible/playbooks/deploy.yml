@@ -1,0 +1,6 @@
+- name: Install dependencies
+  hosts: app
+  roles:
+  - app
+
+- include: start_app.yml
