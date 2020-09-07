@@ -21,5 +21,11 @@ ssi91 microservices repository
 * Оптимизирован образ UI-сервиса за счёт использования ruby-alpine как базового образа
 
 ## HW #14
+* Работа с сетями в Docker
+* docker-compose
+	* собраны образы приложения reddit с помощью docker-compose
+	* запущено приложение reddit с помощью docker-compose
 
 Задать имя проекта можно при опцией `-p, --project-name NAME ` или переменной окружения `COMPOSE_PROJECT_NAME`
+
+
