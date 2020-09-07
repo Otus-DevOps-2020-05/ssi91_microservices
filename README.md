@@ -19,3 +19,7 @@ ssi91 microservices repository
 
 ### Дополнительно
 * Оптимизирован образ UI-сервиса за счёт использования ruby-alpine как базового образа
+
+## HW #14
+
+Задать имя проекта можно при опцией `-p, --project-name NAME ` или переменной окружения `COMPOSE_PROJECT_NAME`
