@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  post_db:
+    networks:
+      back_net:
+        aliases:
+          - comment_db
+  ui:
+    volumes:
+      - ./ui:/app
+    command: puma --debug -w 2
+    networks:
+      - front_net
+  post:
+    volumes:
+      - ./post-py:/app
+    networks:
+      - front_net
+      - back_net
+  comment:
+    volumes:
+      - ./comment:/app
+    command: puma --debug -w 2
+    networks:
+      - front_net
+      - back_net
+
+networks:
+  front_net:
+  back_net:
