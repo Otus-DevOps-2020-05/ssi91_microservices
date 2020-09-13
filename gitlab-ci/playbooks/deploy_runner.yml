@@ -1,0 +1,19 @@
+- name: Deploy Runner and Register
+  hosts:
+    - gitlab-ci
+  tasks:
+    - name: Deploy Runner
+      docker_container:
+        name: gitlab-runner
+        image: gitlab/gitlab-runner:latest
+        state: started
+        volumes:
+          - /srv/gitlab-runner/config:/etc/gitlab-runner
+          - /var/run/docker.sock:/var/run/docker.sock
+        restart_policy: always
+
+    - name: Register Runner
+      vars:
+        runner_token: ztrpF2KYCp6n_eJFnqL1
+      shell:
+        cmd: 'docker exec -it gitlab-runner gitlab-runner register  --url http://{{ external_ip }} --non-interactive  --locked=false  --name DockerRunner  --executor docker  --docker-image alpine:latest  --registration-token {{ runner_token }}  --tag-list "linux,xenial,ubuntu,docker"  --run-untagged'

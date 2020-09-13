@@ -1,0 +1,10 @@
+- name: install docker && docker-compose
+  hosts:
+    - gitlab-ci
+  vars:
+    docker_users:
+      - ubuntu
+    docker_install_compose: false
+  become: true
+  roles:
+    - geerlingguy.docker
