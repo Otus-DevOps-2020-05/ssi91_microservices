@@ -1,0 +1,5 @@
+- name: install docker && docker-compose
+  hosts:
+    - gitlab-ci
+  roles:
+    - deploy-gitlab
