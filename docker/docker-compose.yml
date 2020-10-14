@@ -9,25 +9,49 @@ services:
         aliases:
           - comment_db
   ui:
-    build: ./ui
-    image: ${USERNAME}/ui:${UI_VERSION}
+    image: ${USERNAME}/ui
     ports:
       - ${UI_PIBLIC_PORT}:9292/tcp
     networks:
       - reddit
   post:
-    build: ./post-py
-    image: ${USERNAME}/post:1.0
+    image: ${USERNAME}/post
     networks:
       - reddit
   comment:
-    build: ./comment
-    image: ${USERNAME}/comment:1.0
+    image: ${USERNAME}/comment
+    networks:
+      - reddit
+  prometheus:
+    image: ${USERNAME}/prometheus
+    volumes:
+      - prometheus_data:/prometheus
+    ports:
+      - 9090:9090
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1d'
+    networks:
+      - reddit
+  
+  node-exporter:
+    image: prom/node-exporter:v0.15.2
+    user: root
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
     networks:
       - reddit
 
 volumes:
   post_db:
+  prometheus_data:
 
 networks:
   reddit:
