@@ -48,6 +48,14 @@ services:
       - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
     networks:
       - reddit
+  mongodb-exporter:
+    image: ${USERNAME}/mongodb_exporter
+    environment:
+      MONGODB_URI: 'mongodb://comment_db:27017'
+    # command:
+    #   - '--mongodb.uri=comment_db:27017'
+    networks:
+      - reddit
 
 volumes:
   post_db:
