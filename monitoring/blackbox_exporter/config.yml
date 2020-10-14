@@ -1,0 +1,7 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 10s
+    http:
+      headers:
+        # Host: ui:9292
