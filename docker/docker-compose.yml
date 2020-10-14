@@ -56,6 +56,14 @@ services:
     #   - '--mongodb.uri=comment_db:27017'
     networks:
       - reddit
+  blackbox-exporter:
+    image: ${USERNAME}/blackbox_exporter
+    ports:
+      - 9115:9115
+    command:
+      - '--config.file=/config/config.yml'
+    networks:
+      - reddit
 
 volumes:
   post_db:
