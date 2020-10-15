@@ -42,3 +42,13 @@ ssi91 microservices repository
 ### Дополнительно
 * Добавленны ansible плэйбуки и роли для автомазированного деплоя Gitlab CI и Runner'ов
 * Настроенны нотификации в Slack. Ссылка на канал https://devops-team-otus.slack.com/archives/C0163LNSQ3E
+
+## HW #16
+* Запущен и сконфигурирован Prometheus
+* Проведён монироринг состояния микросервисов
+* Собраны метрики хоста с использованием экспортера
+
+### Дополнительно
+* Собраны метрики MongoDB c использованием [экспортера](https://github.com/percona/mongodb_exporter)
+* Мониторинг сервисов через blackbox_exporter
+* Makefile для сборки образов сервисов приложения и мониторинга
